@@ -1,181 +1,276 @@
-# AI-Powered Customer Onboarding & Success Workflow
+# AI Customer Support & Workflow Automation Copilot
 
 **Created by Anika Turner**
 
-## Why I built this
+A practical, human-in-the-loop AI experiment for improving customer support operations. The workflow turns an incoming customer request into a structured support brief, suggested response, next actions, escalation decision, and reusable workflow insight—while requiring human review before anything is sent to a customer.
 
-Customer onboarding often requires a CSM to turn scattered discovery notes into a clear implementation plan, kickoff agenda, training strategy, follow-up communication, and risk-monitoring plan. I built this project to explore how generative AI can accelerate that work without replacing the judgment and relationship-building that make Customer Success effective.
+## Why I Built This
 
-The goal is not to let AI manage the customer. The goal is to use AI to organize information, surface questions and risks, and create a strong first draft that a CSM reviews and improves before anything reaches a customer.
+In customer-facing work, the same challenge often appears in different forms: a customer asks a question, the support professional must quickly understand the real need, determine urgency, find the right next step, communicate clearly, and decide whether the issue can be handled directly or needs escalation.
 
-## The workflow
+I wanted to explore where generative AI could reduce repetitive work in that process without replacing the judgment and relationship-building that good customer support requires.
 
-**Customer intake → AI analysis → Human review → Onboarding plan → Kickoff agenda → Enablement recommendations → Follow-up draft → Health/risk checkpoints**
+My goal was not to build an AI that automatically answers every customer. I designed a workflow that helps a human support professional work faster and more consistently while staying accountable for the final decision.
 
-### 1. Customer intake
-Capture:
-- Customer/company name
-- Business goal
-- Primary use case
-- Stakeholders and roles
-- Target go-live date
-- Current process/pain points
-- Success measures
-- Training needs
-- Known risks or constraints
+## The Workflow
 
-### 2. AI analysis
-The AI is asked to:
-1. Summarize the customer's desired outcome.
-2. Identify missing discovery questions.
-3. Flag adoption or implementation risks.
-4. Propose milestones and owners.
-5. Recommend training/enablement activities.
-6. Draft a kickoff agenda.
-7. Draft a concise post-kickoff follow-up.
-8. Suggest customer-health checkpoints and human escalation triggers.
+**Customer request → AI triage → support brief → draft response → recommended next actions → escalation check → human review → customer response → workflow/knowledge insight**
 
-### 3. Human review gate
-Before any output is used, the CSM checks:
-- Are facts supported by the intake?
-- Did the AI invent stakeholders, dates, capabilities, or commitments?
-- Are the milestones realistic?
-- Does the communication sound like the CSM/customer relationship?
-- Are risks framed appropriately?
-- Is there anything that requires product, technical, legal, or leadership confirmation?
+### 1. Customer Request
+The workflow begins with a support request containing available context such as:
+- Customer/account type
+- Customer goal
+- Product or workflow involved
+- Problem or question
+- Business impact
+- Urgency
+- Troubleshooting already attempted
+- Recent support or adoption history
 
-This human-review step is intentionally part of the workflow.
+### 2. AI Triage
+The AI classifies the request into a practical support category:
+- How-to / education
+- Configuration or workflow question
+- Adoption / enablement issue
+- Suspected technical issue
+- Billing/account issue
+- Product feedback or feature request
+- Customer frustration / relationship risk
+- Needs more information
 
-## Reusable prompt
+It also assigns a proposed priority of Low, Medium, or High and explains the reasoning.
 
-```text
-You are assisting a Customer Success Manager with SaaS onboarding. Use only the customer information provided. Do not invent product capabilities, commitments, dates, stakeholders, or customer facts.
+### 3. Support Brief
+The AI creates a concise internal summary with:
+- What the customer is trying to accomplish
+- What appears to be blocking them
+- Known facts
+- Missing information
+- Potential risks
+- Recommended support objective
 
-CUSTOMER INTAKE
-Company: [name]
-Business goal: [goal]
-Primary use case: [use case]
-Stakeholders: [names/roles]
-Target go-live: [date]
-Current process/pain points: [details]
-Success measures: [metrics]
-Training needs: [details]
-Known risks/constraints: [details]
+If information is missing, the workflow must say **Needs confirmation** rather than inventing details.
 
-Create:
-1. A 3-5 sentence customer outcome summary.
-2. Up to 5 discovery questions that still need answers.
-3. A phased onboarding plan with milestone, owner, target timing, and success signal.
-4. A 30-minute kickoff agenda.
-5. Recommended enablement/training activities tied to the customer's use case.
-6. A short post-kickoff follow-up email draft.
-7. A customer-health checklist with green/yellow/red indicators.
-8. Human escalation triggers.
+### 4. Draft Customer Response
+The AI drafts a response that:
+- Acknowledges the customer's goal or concern
+- Uses clear, non-technical language when possible
+- Gives only supported next steps
+- Asks targeted follow-up questions when information is missing
+- Avoids promising outcomes the support team cannot guarantee
 
-Label assumptions clearly. If the intake does not support a conclusion, say "Needs confirmation" rather than guessing.
-```
+The response is a draft only. A human reviews it before sending.
 
-## Demo: fictional customer
+### 5. Recommended Next Actions
+The workflow proposes the next 1–3 actions, such as:
+- Send a relevant guide or job aid
+- Schedule a short training session
+- Ask for missing configuration details
+- Reproduce or document the issue
+- Route the issue to a technical/product team
+- Create a follow-up checkpoint
+- Capture customer feedback for product review
 
-To avoid using employer or customer data, this demonstration uses a fictional company.
+### 6. Escalation Check
+The AI explicitly checks for escalation triggers, including:
+- Customer cannot complete a business-critical workflow
+- Repeated issue after reasonable troubleshooting
+- Security, privacy, data-loss, or access concern
+- Significant customer frustration or relationship risk
+- Multiple users/accounts affected
+- Request requires permissions or expertise outside the support role
+- AI lacks enough reliable information to recommend a safe next step
 
-### Intake
+The workflow returns **HANDLE**, **CLARIFY**, or **ESCALATE**, with a short explanation.
 
-**Company:** Northstar Learning Co.  
-**Business goal:** Standardize onboarding for 75 newly hired customer-support specialists over the next two quarters.  
-**Primary use case:** Replace inconsistent manager-created onboarding checklists with one repeatable workflow.  
-**Stakeholders:** Maya Chen, VP Customer Operations (executive sponsor); Luis Rivera, Support Enablement Manager (workflow owner); 6 team leads (end users).  
-**Target go-live:** Six weeks from kickoff.  
-**Current pain points:** Each team lead uses a different checklist; tasks are missed; leaders have limited visibility; new hires ask repeated process questions.  
-**Success measures:** 95% onboarding-task completion, fewer missed tasks, faster manager reporting, and positive new-hire feedback.  
-**Training needs:** Team leads need workflow-builder training; new hires need a short orientation.  
-**Known risks:** Team leads have limited time for implementation; existing checklists are inconsistent; final reporting requirements are not yet defined.
+### 7. Human Review
+A support professional verifies:
+- Accuracy
+- Tone
+- Customer/account context
+- Troubleshooting steps
+- Escalation decision
+- Any commitments or timelines
 
-## Example AI-assisted output
+No customer-facing response should be sent automatically from this prototype.
 
-### Outcome summary
-Northstar wants to create one repeatable onboarding workflow for customer-support hires while preserving clear ownership and visibility for team leads. The first implementation should focus on standardizing required tasks, making completion status visible, and reducing repeated process questions. Success should be evaluated through task completion, missed-task trends, reporting efficiency, and new-hire feedback. Reporting requirements still need confirmation before the workflow is finalized.
+### 8. Workflow & Knowledge Insight
+After the immediate request is addressed, the AI asks a second question: **Is this a one-off issue, or does it reveal a repeatable support opportunity?**
 
-### Discovery questions
-1. Which onboarding tasks are mandatory across all six teams, and which may vary by team?
-2. What systems or resources must new hires access during onboarding?
-3. What reporting views or metrics do Maya and Luis need after launch?
-4. Who approves changes to the standardized workflow?
-5. What would make team leads consider the new workflow easier than their current checklists?
+It can recommend:
+- New Help Center content
+- A reusable troubleshooting checklist
+- A customer training topic
+- An onboarding improvement
+- A support macro/template
+- A product feedback item
+- A workflow automation opportunity
 
-### Proposed onboarding plan
-| Phase | Milestone | Owner | Timing | Success signal |
-|---|---|---|---|---|
-| Discovery | Confirm common onboarding tasks and reporting needs | CSM + Luis | Week 1 | Required workflow inputs approved |
-| Build | Configure first standardized workflow | Luis + CSM | Weeks 2-3 | Draft workflow ready for review |
-| Validate | Pilot with 1-2 team leads | Luis + pilot leads | Week 4 | Feedback captured; critical gaps resolved |
-| Enable | Train team leads and orient new hires | CSM + Luis | Week 5 | Leads can launch and monitor workflow independently |
-| Launch | Roll out to all six teams | Northstar | Week 6 | Workflow active; adoption tracked |
-| Optimize | Review completion, feedback, and reporting | CSM + Northstar | Post-launch | Improvement actions agreed |
+This step is important because customer support should not only close tickets; it can also improve the system that created the ticket.
 
-### Kickoff agenda — 30 minutes
-- 0-5 min: Desired business outcome and success measures
-- 5-12 min: Current onboarding process and pain points
-- 12-18 min: Stakeholders, ownership, and decision process
-- 18-23 min: Scope, milestones, and six-week target
-- 23-27 min: Training and adoption plan
-- 27-30 min: Open questions, risks, and next actions
+---
 
-### Enablement recommendations
-- 45-minute workflow-builder session for Luis and team leads using their actual onboarding scenario.
-- One-page quick-start guide covering launch, task ownership, and status monitoring.
-- 15-minute new-hire orientation focused only on what new hires need to complete and where to ask for help.
-- Office-hours session after the pilot to capture questions before organization-wide rollout.
+## Demo: Fictional Customer Scenario
 
-### Follow-up draft
-Subject: Northstar onboarding workflow — kickoff recap and next steps
+### Incoming Request
+**Customer:** Northstar Services (fictional)
 
-Thanks for a productive kickoff. We aligned on the goal of creating one repeatable onboarding workflow for the six support teams, with an initial launch target six weeks from kickoff. Our first step is to confirm the tasks that must be consistent across teams and define the reporting views leadership needs. Luis will gather the existing team checklists, and we will use those inputs to prepare the first workflow draft for review. We will also confirm the pilot team leads before build completion.
+**User:** Operations Manager
 
-### Health signals
-**Green:** Required tasks agreed; owners respond on time; pilot users attend training; workflow usage begins as planned.  
-**Yellow:** Reporting requirements remain unresolved; pilot feedback is delayed; team leads continue parallel checklists.  
-**Red:** Executive sponsor disengages; no workflow owner is available; launch date remains fixed despite unresolved critical requirements; users cannot complete the core process.
+**Request:** “We created a new client onboarding workflow for our team, but people keep skipping steps and I have to chase them manually. Is there a way to make the process easier to follow? We launched it two weeks ago and adoption is not going well.”
 
-### Human escalation triggers
-- Requested functionality has not been confirmed as supported.
-- Customer asks for a contractual/product commitment.
-- Launch is at risk because a critical dependency has no owner.
-- Executive goals conflict with the implementation team's stated requirements.
-- Sensitive customer data appears in material intended for an AI tool.
+**Business impact:** The manager is spending several hours each week following up with employees, and client handoffs are inconsistent.
 
-## What I tested
+**Troubleshooting attempted:** Manager sent written reminders to the team.
 
-I tested the workflow concept against three different fictional onboarding situations:
+### AI-Assisted Support Brief
+**Category:** Adoption / enablement + workflow configuration
 
-1. **Clear requirements / engaged sponsor** — AI was useful for organizing milestones and producing communication quickly.
-2. **Incomplete requirements** — the first approach tended to make the plan look more certain than the intake justified. I revised the prompt to require "Needs confirmation" and explicit discovery questions instead of filling gaps.
-3. **Adoption risk / limited stakeholder time** — adding health indicators and human escalation triggers made the output more useful for Customer Success rather than simply producing a project plan.
+**Priority:** Medium
 
-## What I learned
+**Customer goal:** Create a repeatable client onboarding process that employees consistently follow without constant manual reminders.
 
-### AI is strongest as a structured first-draft partner
-The most useful output was not the email copy. It was the ability to transform the same intake into several connected artifacts without repeatedly reorganizing the information.
+**Likely blocker:** The issue may involve both workflow design and user adoption. The request does not provide enough information to determine whether reminders, assignments, due dates, permissions, or another configuration is available or correctly set up.
 
-### Guardrails improve usefulness
-Telling the model not to invent product capabilities or customer facts and requiring it to label uncertainty made the workflow more trustworthy.
+**Needs confirmation:**
+- How tasks are assigned today
+- Whether deadlines/reminders are configured
+- Which steps are most often skipped
+- Whether all users received training
+- Whether the workflow is too complex for the team's actual process
 
-### Customer Success still requires human judgment
-An AI-generated milestone can look reasonable while ignoring relationship history, internal politics, product limitations, or a customer's real readiness. I would never send these outputs automatically. The CSM remains responsible for validation and communication.
+### Draft Customer Response
+Hi there,
 
-### Good workflows create better AI inputs
-The quality of the AI output depends heavily on the quality of the intake. Building a consistent intake structure is as important as prompt writing.
+It sounds like the bigger goal is not simply getting the workflow created—it is making it easy enough for the team to follow consistently without you having to chase every step manually. I can help you work through that.
 
-## Next iteration
+Before recommending changes, I would want to understand how tasks are currently assigned, which steps are being skipped most often, and whether your team is receiving reminders or other prompts during the process. I would also look at whether the workflow matches how the team actually works day to day.
 
-If I continued developing this project, I would connect the intake to a form or workflow tool, send the structured fields to an AI step, route the output to a CSM approval task, and write approved milestones back to the customer onboarding workflow. I would also track which AI recommendations are accepted, edited, or rejected to improve the prompt over time.
+Once we have that information, we can narrow down whether this is primarily a configuration issue, a training/adoption issue, or a combination of both and identify the simplest next steps.
 
-## Tools and approach
+### Recommended Next Actions
+1. Ask the manager for the three missing pieces of workflow context.
+2. Review the workflow for ownership, unnecessary complexity, and available reminder/assignment options.
+3. Provide a short enablement session or job aid if configuration is correct but users are unsure how to follow the process.
 
-- Generative AI for structured analysis and drafting
-- Prompt design and iterative testing
-- Workflow mapping
-- Human-in-the-loop review
-- Fictional test data only
+### Escalation Decision
+**CLARIFY** — There is not enough product/configuration information to give specific technical instructions safely. The customer is experiencing adoption friction, but there is no evidence yet of a product failure or urgent account risk.
 
-This is a learning project, not a production customer system. It intentionally uses fictional data and demonstrates how I think about combining AI, repeatable workflows, customer enablement, and human judgment.
+### Workflow Improvement Opportunity
+If multiple customers report that teams create workflows successfully but struggle with adoption afterward, this could justify:
+- A “Launching Your First Workflow” checklist
+- A short adoption webinar
+- A Help Center article on workflow ownership and follow-through
+- A 7-day post-launch customer success checkpoint
+
+---
+
+## Testing the Workflow
+
+I tested the prompt against three fictional support situations to see whether it would distinguish between education, adoption risk, and issues that require escalation.
+
+### Test 1: Routine How-To Question
+**Scenario:** A new customer asks how to organize a recurring internal approval process.
+
+**Expected behavior:** Ask enough questions to understand the process, provide a structured recommendation, and avoid unnecessary escalation.
+
+**Result:** The workflow classified the request as how-to/configuration and recommended a short discovery step before drafting guidance.
+
+**Learning:** My first prompt encouraged the AI to move too quickly into a solution. I revised it to separate known facts from assumptions and require “Needs confirmation” for missing information.
+
+### Test 2: Frustrated Customer / Low Adoption
+**Scenario:** A customer has launched a workflow, but employees are not consistently using it and the customer is manually chasing completion.
+
+**Expected behavior:** Recognize that the problem may involve both configuration and adoption, acknowledge the customer's frustration, and recommend enablement rather than treating every issue as a technical defect.
+
+**Result:** The revised workflow separated product questions from change-management needs and suggested both configuration review and targeted training.
+
+**Learning:** Customer support AI needs context about the customer's desired outcome, not just the literal question in the ticket.
+
+### Test 3: High-Risk Issue
+**Scenario:** A customer reports that several users suddenly cannot access a business-critical workflow and says a deadline is approaching.
+
+**Expected behavior:** Do not invent troubleshooting steps or imply that the problem is solved. Flag the impact, gather essential information, and escalate to the appropriate technical team.
+
+**Result:** The workflow returned ESCALATE and drafted a response that acknowledged the impact while requesting only the information needed for escalation.
+
+**Learning:** A useful AI support workflow needs explicit boundaries. “I don't have enough reliable information” can be a better output than a confident but unsupported answer.
+
+---
+
+## Prompt Iterations
+
+### Version 1
+My initial prompt asked AI to summarize the issue, recommend a solution, and draft a response.
+
+**Problem:** It was too solution-oriented. When context was incomplete, the output could sound more certain than the available information justified.
+
+### Version 2
+I added:
+- Known facts vs. assumptions
+- “Needs confirmation” for missing information
+- Priority reasoning
+- Explicit escalation triggers
+- Human review requirement
+
+**Improvement:** The output became more cautious and operationally useful.
+
+### Version 3
+I added the final **Workflow & Knowledge Insight** step.
+
+**Why:** Resolving an individual request is valuable, but recurring customer questions can reveal opportunities to improve onboarding, training, documentation, product feedback loops, and support workflows.
+
+---
+
+## What I Learned
+
+Building this project reinforced several things for me:
+
+1. **AI works better when the workflow is clear.** A vague request such as “answer this ticket” produces less reliable output than a structured process with defined stages and decision points.
+
+2. **Customer context matters more than the surface-level question.** A customer asking “How do I fix this?” may actually need training, better workflow design, clearer ownership, or technical escalation.
+
+3. **AI should expose uncertainty, not hide it.** Requiring the model to label missing information made the workflow more trustworthy.
+
+4. **Escalation is a feature, not a failure.** A good support system should recognize when an issue exceeds its available information or authority.
+
+5. **Support data can improve the customer journey.** Repeated questions can become Help Center articles, training topics, onboarding checkpoints, macros, product feedback, or automated workflows.
+
+6. **Human review remains essential.** Tone, account history, customer relationships, product accuracy, and commitments require judgment that should not be delegated blindly to an AI system.
+
+---
+
+## How I Would Measure This in a Real Support Environment
+
+If this were implemented with real support data, I would evaluate whether it improves:
+- First-response time
+- Time to resolution
+- Escalation accuracy
+- Reopen rate
+- Customer satisfaction
+- Support response consistency
+- Knowledge-base reuse
+- Volume of recurring issues converted into self-service or automated workflows
+
+I would also review AI-assisted responses for accuracy and customer experience rather than assuming faster automatically means better.
+
+## Tools & Skills Demonstrated
+
+- Generative AI prompting and iteration
+- Customer support triage
+- Workflow design
+- Customer communication
+- Escalation judgment
+- Knowledge management
+- Customer enablement
+- Process improvement
+- Human-in-the-loop AI design
+- AI testing and reflection
+
+## Responsible Use
+
+This project uses fictional customer data only. It does not contain employer, student, district, or real customer information. The prototype is designed for human review and does not automatically send AI-generated responses or make high-impact customer decisions.
+
+## Next Iteration
+
+My next step would be to turn the workflow into a no-code prototype where a support request submitted through a form automatically creates a structured support brief, suggested response, escalation status, and knowledge-management recommendation for human review.
